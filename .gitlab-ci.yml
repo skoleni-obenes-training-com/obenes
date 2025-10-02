@@ -1,7 +1,8 @@
 default:
   image: docker:24.0.5
   services:
-    - docker:24.0.5-dind
+    - name: 'docker:24.0.5-dind'
+      command: ['--tls=false', '--host=tcp://0.0.0.0:2375', '--tlsverify=false']
   before_script:
     - docker info
 
