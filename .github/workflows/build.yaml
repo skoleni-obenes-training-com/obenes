@@ -15,7 +15,7 @@ jobs:
       - name: Test
         run: cd src ; go test
       - name: Build
-        run: CGO_ENABLED=0 go build -ldflags '-extldflags "-static"' -o ./server ./server.go
+        run: cd src ; CGO_ENABLED=0 go build -o ./server ./server.go
 
   build-docker:
     runs-on: ubuntu-latest
