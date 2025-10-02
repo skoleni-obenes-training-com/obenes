@@ -20,9 +20,10 @@ variables:
   # creates them automatically on boot, and creates
   # `/certs/client` to share between the service and job
   # container, thanks to volume mount from config.toml
-  DOCKER_TLS_CERTDIR: "/certs"
-  DOCKER_HOST: "unix:///runner/services/docker/docker.sock"
-
+  #DOCKER_TLS_CERTDIR: "/certs"
+  #DOCKER_HOST: "unix:///runner/services/docker/docker.sock"
+  DOCKER_HOST: tcp://docker:2375/
+  DOCKER_TLS_CERTDIR: ""
 
 
 stages:          # List of stages for jobs, and their order of execution
