@@ -10,7 +10,7 @@ import (
 
 
 func TestHealthHandler(t *testing.T) {
-	expected := "ok"
+	expected := "OK"
 	req := httptest.NewRequest(http.MethodGet, "/health", nil)
 	w := httptest.NewRecorder()
 	healthHandler(w, req)
