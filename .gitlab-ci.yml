@@ -10,7 +10,6 @@ stages:          # List of stages for jobs, and their order of execution
 test go:
   stage: test
   image: golang
-  allow_failure: false
   script:
     - cd src
     - go fmt $(go list ./... | grep -v /vendor/)
@@ -25,7 +24,8 @@ test go:
 
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
-  allow_failure: false
+  needs:
+    - "test go"
   script:
     - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA .
     - docker login --username $CI_REGISTRY_USER --password $CI_REGISTRY_PASSWORD $CI_REGISTRY
