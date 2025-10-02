@@ -21,6 +21,8 @@ variables:
   # `/certs/client` to share between the service and job
   # container, thanks to volume mount from config.toml
   DOCKER_TLS_CERTDIR: "/certs"
+  DOCKER_HOST: "unix:///runner/services/docker/docker.sock"
+
 
 
 stages:          # List of stages for jobs, and their order of execution
